@@ -185,6 +185,7 @@ h1 {
     background: var(--card-bg);
     box-shadow: 0 20px 30px rgba(0,0,0,0.5);
     z-index: 2;
+    animation: float 4s ease-in-out infinite; 
 }
 
 .profile-card img {
@@ -286,6 +287,7 @@ h1 {
     flex-direction: column;
     gap: 15px;
     transition: transform 0.3s ease, border-color 0.3s ease;
+    position: relative; 
 }
 
 .work-card:hover {
@@ -301,7 +303,6 @@ h1 {
     width: 100%;
 }
 
-/* Remove bottom margin from logo since the gap handles it */
 .card-header .custom-work-logo, 
 .card-header .work-icon {
     margin-bottom: 0; 
@@ -589,7 +590,6 @@ footer {
    RESPONSIVE DESIGN (All Screen Sizes)
    ========================================= */
 
-/* 1. EXTRA LARGE SCREENS / TVs (Min-width: 1600px) */
 @media (min-width: 1600px) {
     header, .hero-section, .works-section, .about-section, .contact-section, footer {
         padding-left: 18%;
@@ -597,7 +597,6 @@ footer {
     }
 }
 
-/* 2. TABLETS & SMALL LAPTOPS (Max-width: 1024px) */
 @media (max-width: 1024px) {
     .hero-section {
         grid-template-columns: 1fr;
@@ -631,7 +630,6 @@ footer {
     }
 }
 
-/* 3. MOBILE PHONES (Max-width: 768px) */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -690,4 +688,28 @@ footer {
         width: 100%;
         justify-content: center;
     }
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+/* 1. Floating Animation for Profile Card */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* 2. Scroll Reveal Base State (Hidden & Pushed Down) */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 3. Scroll Reveal Active State (Visible & Normal Position) */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
